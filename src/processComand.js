@@ -6,6 +6,7 @@ import createFile from "./commands/add.js";
 import renameFile from "./commands/rn.js";
 import copyFile from "./commands/cp.js";
 import removeFile from "./commands/rm.js";
+import moveFile from "./commands/mv.js";
 
 const processCommand = async (command, currentDir) => {
     const [cmd, ...args] = command.split(' ');
@@ -33,6 +34,9 @@ const processCommand = async (command, currentDir) => {
         }
         case 'rm': {
             return await removeFile(currentDir, args[0]);
+        }
+        case 'mv': {
+            return await moveFile(currentDir, args[0], args[1]);
         }
         default:
             console.log('Invalid input');
