@@ -7,6 +7,7 @@ import renameFile from "./commands/rn.js";
 import copyFile from "./commands/cp.js";
 import removeFile from "./commands/rm.js";
 import moveFile from "./commands/mv.js";
+import handleOsInfo from "./commands/os.js";
 
 const processCommand = async (command, currentDir) => {
     const [cmd, ...args] = command.split(' ');
@@ -37,6 +38,10 @@ const processCommand = async (command, currentDir) => {
         }
         case 'mv': {
             return await moveFile(currentDir, args[0], args[1]);
+        }
+        case 'os': {
+            await handleOsInfo(args[0]);
+            return currentDir;
         }
         default:
             console.log('Invalid input');
