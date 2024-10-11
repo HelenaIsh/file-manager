@@ -19,7 +19,7 @@ rl.on('line', async (input) => {
     rl.close();
   } else {
     try {
-      processCommand(input);
+      currentDir = await processCommand(input, currentDir);
     } catch (e) {
       console.log('Operation failed');
     }

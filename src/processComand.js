@@ -1,7 +1,12 @@
-const processCommand = async (command) => {
+import listDirectory from "./commands/ls.js";
+
+const processCommand = async (command, currentDir) => {
     switch (command) {
-      default:
-        console.log('Invalid input');
+        case 'ls': {
+            return await listDirectory(currentDir);
+        }
+        default:
+            console.log('Invalid input');
     }
 };
 
