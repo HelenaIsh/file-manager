@@ -4,6 +4,7 @@ import listDirectory from "./commands/ls.js";
 import readFile from "./commands/cat.js";
 import createFile from "./commands/add.js";
 import renameFile from "./commands/rn.js";
+import copyFile from "./commands/cp.js";
 
 const processCommand = async (command, currentDir) => {
     const [cmd, ...args] = command.split(' ');
@@ -25,6 +26,9 @@ const processCommand = async (command, currentDir) => {
         }
         case 'rn': {
             return await renameFile(currentDir, args[0], args[1]);
+        }
+        case 'cp': {
+            return await copyFile(currentDir, args[0], args[1]);
         }
         default:
             console.log('Invalid input');
