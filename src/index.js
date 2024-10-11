@@ -1,5 +1,6 @@
 import readline from 'readline';
 import os from 'os';
+import processCommand from './processComand.js';
 
 const userName = process.argv.slice(2)[0].split('=')[1] ?? 'Anonymous';
 let currentDir = os.homedir()
@@ -17,6 +18,11 @@ rl.on('line', async (input) => {
   if (input === '.exit') {
     rl.close();
   } else {
+    try {
+      processCommand(input);
+    } catch (e) {
+      console.log('Operation failed');
+    }
     console.log(`You are currently in ${currentDir}`);
   }
 });
