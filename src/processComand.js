@@ -9,6 +9,7 @@ import removeFile from "./commands/rm.js";
 import moveFile from "./commands/mv.js";
 import handleOsInfo from "./commands/os.js";
 import calculateHash from "./commands/hash.js";
+import compressFile from "./commands/compress.js";
 
 const processCommand = async (command, currentDir) => {
     const [cmd, ...args] = command.split(' ');
@@ -46,6 +47,9 @@ const processCommand = async (command, currentDir) => {
         }
         case 'hash': {
             return await calculateHash(currentDir, args[0]);
+        }
+        case 'compress': {
+            return await compressFile(currentDir, args[0], args[1]);
         }
         default:
             console.log('Invalid input');
