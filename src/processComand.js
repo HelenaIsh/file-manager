@@ -1,9 +1,14 @@
+import changeDirectory from "./commands/cd.js";
 import listDirectory from "./commands/ls.js";
 
 const processCommand = async (command, currentDir) => {
-    switch (command) {
+    const [cmd, ...args] = command.split(' ');
+    switch (cmd) {
         case 'ls': {
             return await listDirectory(currentDir);
+        }
+        case 'cd': {
+            return await changeDirectory(currentDir, args[0]);
         }
         default:
             console.log('Invalid input');
