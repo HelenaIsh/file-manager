@@ -2,6 +2,7 @@ import upDirectory from "./commands/up.js";
 import changeDirectory from "./commands/cd.js";
 import listDirectory from "./commands/ls.js";
 import readFile from "./commands/cat.js";
+import createFile from "./commands/add.js";
 
 const processCommand = async (command, currentDir) => {
     const [cmd, ...args] = command.split(' ');
@@ -17,6 +18,9 @@ const processCommand = async (command, currentDir) => {
         }
         case 'cat': {
             return await readFile(currentDir, args[0]);
+        }
+        case 'add': {
+            return await createFile(currentDir, args[0]);
         }
         default:
             console.log('Invalid input');
