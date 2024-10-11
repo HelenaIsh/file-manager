@@ -10,6 +10,7 @@ import moveFile from "./commands/mv.js";
 import handleOsInfo from "./commands/os.js";
 import calculateHash from "./commands/hash.js";
 import compressFile from "./commands/compress.js";
+import decompressFile from "./commands/decompress.js";
 
 const processCommand = async (command, currentDir) => {
     const [cmd, ...args] = command.split(' ');
@@ -50,6 +51,9 @@ const processCommand = async (command, currentDir) => {
         }
         case 'compress': {
             return await compressFile(currentDir, args[0], args[1]);
+        }
+        case 'decompress': {
+            return await decompressFile(currentDir, args[0], args[1]);
         }
         default:
             console.log('Invalid input');
