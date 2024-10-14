@@ -11,7 +11,8 @@ console.log(`You are currently in ${currentDir}`);
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
-  });
+});
+rl.prompt();
   
 rl.on('line', async (input) => {
   input = input.trim();
@@ -21,9 +22,11 @@ rl.on('line', async (input) => {
     try {
       currentDir = await processCommand(input, currentDir);
     } catch (e) {
+      console.log(e);
       console.log('Operation failed');
     }
     console.log(`You are currently in ${currentDir}`);
+    rl.prompt();
   }
 });
 
